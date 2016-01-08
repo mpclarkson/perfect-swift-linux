@@ -2,11 +2,13 @@
 
 ##Introduction
 
-Here's a `Vagrantfile` that builds a Ubuntu 15.10 virtual machine configured with open source [Swift](http://swift.org) and the Swift server [Perfect](https://github.com/PerfectlySoft/Perfect)
+This is `Vagrantfile` that builds a Ubuntu 15.10 virtual machine configured with open source [Swift](http://swift.org) and the Swift server [Perfect](https://github.com/PerfectlySoft/Perfect).
+
+This installs the `swift-2.2-SNAPSHOT-2016-01-06-a` snapshot but this can be changed in the `Vagranfile`.
 
 ##Instructions
 
-1. Ensure you have [Vagrant](https://www.vagrantup.com) installed
+1. Ensure you have [Vagrant](https://www.vagrantup.com) configured.
 
 2. Clone this repository:
 
