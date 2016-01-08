@@ -1,4 +1,4 @@
-#Swift and PerfectServer on Linux using Vagrant!
+#Swift and Perfect on Linux using Vagrant!
 
 ##Introduction
 
@@ -12,7 +12,7 @@ This installs the `swift-2.2-SNAPSHOT-2016-01-06-a` snapshot but this can be cha
 2. Clone this repository:
 `git clone https://github.com/mpclarkson/perfect-swift-ubuntu`
 3. Open the folder:
-`cd perfect-swift-vagrant`
+`cd perfect-swift-linux`
 4. Install the virtual machine:
 `vagrant up`
 5. SSH into it:
