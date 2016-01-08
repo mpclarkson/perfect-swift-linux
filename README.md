@@ -9,32 +9,20 @@ This installs the `swift-2.2-SNAPSHOT-2016-01-06-a` snapshot but this can be cha
 ##Instructions
 
 1. Ensure you have [Vagrant](https://www.vagrantup.com) configured.
-
 2. Clone this repository:
-
 `git clone https://github.com/mpclarkson/perfect-swift-ubuntu`
-
 3. Open the folder:
-
 `cd perfect-swift-vagrant`
-
 4. Install the virtual machine:
-
 `vagrant up`
-
 5. SSH into it:
-
 `vagrant ssh`:
-
 6. Go to the directory that is shared with your local machine:
-
 `cd vagrant`
-
 7. Start the Perfect server in the `vagrant` folder:
-
 `perfectserverhttp`
 
-Open your browser and go to `http://127.0.0.1:8181/`
+Open your browser and go to http://127.0.0.1:8181/
 
 > Note that this only displays a static `index.html` file for demo purposes. Detailed instructions for building a swift server app are available in the [Perfect](https://github.com/PerfectlySoft/Perfect) Github repo.
 
