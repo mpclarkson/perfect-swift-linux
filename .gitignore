@@ -1,0 +1,6 @@
+*
+!.gitignore
+!Vagrantfile
+!README.md
+!LICENSE.md
+!webroot/*
