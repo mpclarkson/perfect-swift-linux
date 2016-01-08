@@ -2,4 +2,7 @@
 !.gitignore
 .tempvagrant
 .vagrant
-Perfect/
+Perfect/*
+PerfectLibraries/*
+SQLiteDBs/*
+webroot/*
