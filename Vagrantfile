@@ -58,6 +58,7 @@ Vagrant.configure("2") do |config|
 
         echo "* Moving Libraries and Templates... "
         mkdir -p /vagrant/PerfectLibraries/
+        mkdir -p /vagrant/webroot/
         find /vagrant/Perfect/Examples/ -name "*.so" | xargs -i cp {} /vagrant/PerfectLibraries/
         find /vagrant/Perfect/Examples/ -name "*.mustache" | xargs -i cp {} /vagrant/webroot/
 
