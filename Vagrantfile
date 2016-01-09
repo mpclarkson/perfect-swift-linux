@@ -21,6 +21,7 @@ Vagrant.configure("2") do |config|
         rm -rf swift
         mv #{SWIFT_VERSION}-ubuntu15.10 swift
         echo "* Adding swift to PATH..."
+        export PATH=/home/vagrant/swift/usr/bin:\"${PATH}\"
         echo "export PATH=/home/vagrant/swift/usr/bin:\"${PATH}\"" >> /home/vagrant/.bashrc
         sudo chown -R vagrant /home/vagrant/swift/
 
