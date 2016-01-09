@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
         cd /vagrant/Perfect/PerfectServer
         make &> /dev/null
 
-        echo "* Symlinking... ***"
+        echo "* Symlinking..."
         sudo rm -r /usr/local/bin/perfectserverfcgi 2> /dev/null
         sudo ln -s /vagrant/Perfect/PerfectServer/perfectserverfcgi /usr/local/bin/perfectserverfcgi
         sudo rm -r /usr/local/bin/perfectserverhttp 2> /dev/null
@@ -52,7 +52,7 @@ Vagrant.configure("2") do |config|
         cd /vagrant/Perfect/Examples/Upload\\ Enumerator && make &> /dev/null
         echo "* Making Upload Websockets Server..."
         cd /vagrant/Perfect/Examples/Websockets\\ Server && make &> /dev/null
-        echo "* URL Routing..."
+        echo "* Making URL Routing..."
         cd /vagrant/Perfect/Examples/URL\\ Routing && make &> /dev/null
 
         echo "* Moving Libraries and Templates... "
