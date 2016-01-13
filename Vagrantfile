@@ -1,5 +1,5 @@
 Vagrant.configure("2") do |config|
-    SWIFT_VERSION = "swift-2.2-SNAPSHOT-2016-01-06-a"
+    SWIFT_VERSION = "swift-2.2-SNAPSHOT-2016-01-11-a"
     config.vm.define :"perfect-swift-linux" do |config|
         config.vm.provider "virtualbox" do |v|
           v.name = "perfect-swift-linux"
