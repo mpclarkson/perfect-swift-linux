@@ -1,5 +1,8 @@
 Vagrant.configure("2") do |config|
-    SWIFT_VERSION = "swift-2.2-SNAPSHOT-2016-01-11-a"
+    SWIFT_VERSION = "swift-2.2-SNAPSHOT-2016-01-06-a"
+
+    # wget https://swift.org/builds/ubuntu1510/swift-2.2-SNAPSHOT-2016-01-06-a/swift-2.2-SNAPSHOT-2016-01-06-a-ubuntu15.10.tar.gz
+# tar -zxvf swift-2.2-SNAPSHOT-2016-01-06-a-ubuntu15.10.tar.gz &> /dev/null
     config.vm.define :"perfect-swift-linux" do |config|
         config.vm.provider "virtualbox" do |v|
           v.name = "perfect-swift-linux"
@@ -10,7 +13,7 @@ Vagrant.configure("2") do |config|
         config.vm.provision "shell", inline: <<-SHELL
 
         echo "*** Installing dependencies ***"
-        sudo apt-get --assume-yes install git cmake ninja-build clang uuid-dev libicu-dev icu-devtools libbsd-dev libedit-dev libxml2-dev swig libpython-dev libncurses5-dev pkg-config libssl-dev libevent-dev libsqlite3-dev
+        sudo apt-get --assume-yes install git clang libicu-dev libssl-dev libevent-dev libsqlite3-dev
 
         echo "*** Installing Swift ***"
         cd /home/vagrant/
@@ -20,23 +23,21 @@ Vagrant.configure("2") do |config|
         tar -zxvf #{SWIFT_VERSION}-ubuntu15.10.tar.gz &> /dev/null
         rm -rf swift
         mv #{SWIFT_VERSION}-ubuntu15.10 swift
-        echo "* Adding swift to PATH..."
-        export PATH=/home/vagrant/swift/usr/bin:\"${PATH}\"
-        echo "export PATH=/home/vagrant/swift/usr/bin:\"${PATH}\"" >> /home/vagrant/.bashrc
-        sudo chown -R vagrant /home/vagrant/swift/
+
+        echo "* Adding Swift to PATH"
+        sudo chown -R vagrant:vagrant /home/vagrant/swift/
+        [ -f /home/vagrant/.profile ] || touch /home/vagrant/.profile
+        grep 'PATH=/home/vagrant/swift/usr/bin' /home/vagrant/.profile || echo 'export PATH=/home/vagrant/swift/usr/bin:$PATH' | tee -a /home/vagrant/.profile
 
         echo "*** Downloading Perfect ***"
         rm -rf /vagrant/Perfect
-        cd /vagrant && git clone https://github.com/PerfectlySoft/Perfect.git &> /dev/null
+        cd /vagrant && git clone https://github.com/PerfectlySoft/Perfect.git
 
         echo "* Making PerfectLib... "
-        cd /vagrant/Perfect/PerfectLib
-        make &> /dev/null
-        sudo make install &> /dev/null
+        cd /vagrant/Perfect/PerfectLib && make && sudo make install
 
         echo "* Making PerfectServer..."
-        cd /vagrant/Perfect/PerfectServer
-        make &> /dev/null
+        cd /vagrant/Perfect/PerfectServer && make
 
         echo "* Symlinking..."
         sudo rm -r /usr/local/bin/perfectserverfcgi 2> /dev/null
@@ -46,15 +47,15 @@ Vagrant.configure("2") do |config|
 
         echo "*** Building Perfect Examples ***"
         echo "* Making Authenticator..."
-        cd /vagrant/Perfect/Examples/Authenticator && make &> /dev/null
+        cd /vagrant/Perfect/Examples/Authenticator && make
         echo "* Making Tap Tracker..."
-        cd /vagrant/Perfect/Examples/Tap\\ Tracker && make &> /dev/null
+        cd /vagrant/Perfect/Examples/Tap\\ Tracker && make
         echo "* Making Upload Enumerator..."
-        cd /vagrant/Perfect/Examples/Upload\\ Enumerator && make &> /dev/null
+        cd /vagrant/Perfect/Examples/Upload\\ Enumerator && make
         echo "* Making Upload Websockets Server..."
-        cd /vagrant/Perfect/Examples/Websockets\\ Server && make &> /dev/null
+        cd /vagrant/Perfect/Examples/Websockets\\ Server && make
         echo "* Making URL Routing..."
-        cd /vagrant/Perfect/Examples/URL\\ Routing && make &> /dev/null
+        cd /vagrant/Perfect/Examples/URL\\ Routing && make
 
         echo "* Moving Libraries and Templates... "
         mkdir -p /vagrant/PerfectLibraries/
