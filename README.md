@@ -1,5 +1,9 @@
 #Swift and Perfect Server on Linux with Vagrant
 
+##NOTE
+
+This is no longer maintained, as I much prefer the [Vapor](https://github.com/qutheory/vapor) Swift Web Framework. 
+
 ##Introduction
 
 This is `Vagrantfile` that builds a Ubuntu 15.10 virtual machine with open source [Swift](http://swift.org) and the Swift server [Perfect](https://github.com/PerfectlySoft/Perfect).
